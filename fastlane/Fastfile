@@ -61,24 +61,21 @@ platform :ios do
     end
 
     update_code_signing_settings(
+      use_automatic_signing: true, 
+      path: ENV['PROJECT_PATH']
+    
+    update_code_signing_settings(
       use_automatic_signing: false,
       path: ENV['PROJECT_PATH'],
       code_sign_identity: ENV['CODE_SIGNING_IDENTITY'],
-      targets: update_targets
+      targets: 'Unity-iPhone'
     )
 
     if @profiles.length == 1
       update_project_provisioning(
         xcodeproj: ENV['PROJECT_PATH'],
         profile: @profiles[0],
-        target_filter:
-          if update_targets
-            update_targets.map { |target| "^#{Regexp.escape(target)}$" }.join(
-              '|'
-            )
-          else
-            nil
-          end
+        target_filter: '.*Unity-iPhone.*'
       )
     end
 
