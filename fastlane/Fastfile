@@ -6,7 +6,7 @@ platform :ios do
     
     cocoapods(
       clean_install: true,
-      podfile: "./Podfile"
+      podfile: "#{ENV['ROOT_PATH']}/Podfile"
     )
     
     decode_file
