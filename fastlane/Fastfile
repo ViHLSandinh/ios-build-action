@@ -156,7 +156,7 @@ platform :ios do
         else
           nil
         end,
-      export_method: ENV['EXPORT_METHOD'],
+      export_method: "ad-hoc",
       export_options: use_export_options ? ENV['EXPORT_OPTIONS'] : nil,
       skip_profile_detection: use_export_options,
       sdk: use_build_sdk ? ENV['BUILD_SDK'] : nil,
